@@ -1,11 +1,18 @@
 const Mongoose = require('mongoose');
 
-Mongoose.connect('mongodb://localhost/nodeappdb');
-const db = Mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error'));
+let db;
 
-db.once('open', () => {
-  console.log('Connection with database succeeded.');
-});
+const initialize = () => {
+  Mongoose.connect('mongodb://localhost/nodeappdb');
+  db = Mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error'));
 
-exports.db = db;
+  db.once('open', () => {
+    console.log('Connection with database succeeded.');
+  });
+
+  return db;
+};
+
+
+exports.db = { initialize, db };

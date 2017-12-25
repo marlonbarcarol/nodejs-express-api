@@ -2,9 +2,9 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const routes = require('../http/routes');
-const mongoose = require('mongoose');
+const { db } = require('./db');
 
-mongoose.connect(process.env.DB_HOST);
+db.initialize();
 
 app.use(cors()); // Enable all cors requests.
 app.use(bodyParser.urlencoded({ extended: true }));
