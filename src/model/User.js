@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
+const mongoose = require('mongoose');
 
 function validateEmail(email) {
   const re = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -36,4 +37,23 @@ const UserSchema = new Schema({
   },
 });
 
-module.exports = model('Users', UserSchema);
+// UserSchema.statics = {
+//   get: (query) => {
+//     this.findOne(query);
+//   },
+//   getAll: (query) => {
+//     this.find(query);
+//   },
+//   updateById: (id, updateData) => {
+//     this.update(id, { $set: updateData });
+//   },
+//   remove: async (removeData) => {
+//     await this.remove(removeData);
+//   },
+//   create: (data) => {
+//     const registry = new this(data);
+//     return registry.save();
+//   },
+// };
+
+module.exports = mongoose.model('Users', UserSchema);
