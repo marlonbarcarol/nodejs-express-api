@@ -1,2 +1,2 @@
-require('dotenv').config(); // process.env.DB_HOST
+require('dotenv').config();
 require('./bootstrap/app');

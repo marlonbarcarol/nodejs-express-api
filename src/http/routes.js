@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const UserController = require('./controllers/UserController');
 
-router.get('/', (req, res) => {
-  res.send('Hello World');
-});
+/*
+ * {TODO} Handle errors
+ */
 
-router.get('/api', (req, res) => {
+router.get('/', (req, res) => {
   res.send('Hello World');
 });
 
@@ -13,14 +13,20 @@ router.get('/users', async (req, res) => {
   res.send(await UserController.getAll());
 });
 
-router.get('/users/:id', (req, res) => {
-  res.send('get with id');
+router.put('/users', async (req, res) => {
+  res.send(await UserController.update(req.body));
 });
 
 router.post('/users', async (req, res) => {
-  console.log(req.body);
-  const user = await UserController.create(req.body);
-  res.send(user);
+  res.send(await UserController.create(req.body));
+});
+
+router.get('/users/:id', async (req, res) => {
+  res.send(await UserController.get(req.params.id));
+});
+
+router.delete('/users/:id', async (req, res) => {
+  res.send(await UserController.delete(req.params.id));
 });
 
 module.exports = router;

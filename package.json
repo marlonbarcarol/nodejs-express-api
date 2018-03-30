@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prestart": "touch ~/mongod.log && mongod --fork --logpath ~/mongod.log",
     "start": "nodemon src/index.js",
+    "stop": "mongo --eval 'db.getSiblingDB(\"admin\").shutdownServer()'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

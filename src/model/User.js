@@ -37,23 +37,4 @@ const UserSchema = new Schema({
   },
 });
 
-// UserSchema.statics = {
-//   get: (query) => {
-//     this.findOne(query);
-//   },
-//   getAll: (query) => {
-//     this.find(query);
-//   },
-//   updateById: (id, updateData) => {
-//     this.update(id, { $set: updateData });
-//   },
-//   remove: async (removeData) => {
-//     await this.remove(removeData);
-//   },
-//   create: (data) => {
-//     const registry = new this(data);
-//     return registry.save();
-//   },
-// };
-
 module.exports = mongoose.model('Users', UserSchema);

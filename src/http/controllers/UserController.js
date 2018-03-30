@@ -1,10 +1,9 @@
-const Base = require('./base-crud');
+const BaseController = require('./BaseController');
 const User = require('../../model/User');
 
-class UserController extends Base {
+class UserController extends BaseController {
   constructor() {
     super(User);
-    console.log(this);
   }
 }
 
