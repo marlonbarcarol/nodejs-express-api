@@ -1,6 +1,9 @@
 {
     "extends": "airbnb-base",
     "rules": {
-        "no-underscore-dangle": 0
+        "no-underscore-dangle": 0,
+        "class-methods-use-this": 0,
+        /* This forces to return in the end. I believe in early returns. */
+        "consistent-return": 0
     }
 }

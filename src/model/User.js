@@ -17,8 +17,14 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  /**
+   * {TODO} Encrypt user pw.
+   * Something like https://stackoverflow.com/questions/14588032/mongoose-password-hashing
+   * Warn: Check if findOneAndUpdate does triggers on 'save'.
+   */
   password: {
     type: String,
+    select: false,
     required: true,
     minlength: 6,
   },
@@ -35,6 +41,13 @@ const UserSchema = new Schema({
     enum: ['user', 'admin'],
     required: true,
   },
+});
+
+UserSchema.set('toJSON', {
+  virtuals: true,
+  versionKey: false,
+  // eslint-disable-next-line no-param-reassign
+  transform: (doc, ret) => { delete ret._id; },
 });
 
 module.exports = mongoose.model('Users', UserSchema);

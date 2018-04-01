@@ -11,10 +11,10 @@ const { db } = require('./db');
 db.initialize();
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use('/', routes);
 app.all('*', (req, res) => {
-  res.send('not found', 404);
+  res.send('endpoint was not found', 404);
 });
 
 app.listen(process.env.PORT || 80);
